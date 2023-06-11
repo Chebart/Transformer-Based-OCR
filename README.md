@@ -1,15 +1,16 @@
-# Transformer-OCR
+# Transformer-Based OCR
 <p align="center">
-  <img src="https://github.com/Chebart/Transformer-OCR/assets/88379173/55d6c388-bab2-4bb2-b640-8ad7e88d198a">
+  <img src="https://iconext.co.th/wp-content/uploads/2021/10/OCR_Offline-1400x602.png">
 </p>
 
 
 Implementation of transformer for optical character recognition of russian words.
 
-Text recognition is a long-standing research problem for document digitalization. Existing approaches are usually built
-based on CNN for image understanding and RNN for charlevel text generation. In addition, another language model is
-usually needed to improve the overall accuracy as a postprocessing step. This implementation leverages
-the Transformer architecture for both image understanding and wordpiece-level text generation.
+Optical Character Recognition (OCR) is the conversion of images of typed, handwritten or
+printed text into machine-encoded text, whether from a scanned document, a photo of a document, 
+a scene photo or from subtitle text superimposed on an image. OCR is a long-standing research problem for document digitalization. 
+Many approaches are usually built based on CNN for image understanding and RNN for charlevel text generation. 
+This implementation leverages the Transformer architecture for both image understanding and wordpiece-level text generation.
 
 ## Useful links
 
@@ -30,3 +31,10 @@ torchvision==0.14.1+cu117
 datasets==2.10.1
 transformers==4.27.3
 ```
+
+## Dataset
+Trainig and test datasets consists of 122297 RGB images of Russian text. There are examples of handwritten and printed text.
+The datasets are distributed as .PNG and .JPEG pictures. You can download images [here](https://drive.google.com/file/d/19EwmBqbX3u1yhYrBbkSwpVTzFuvOhRy8/view?usp=sharing).
+<p align="center">
+  <img src="https://github.com/Chebart/Transformer-OCR/assets/88379173/55d6c388-bab2-4bb2-b640-8ad7e88d198a">
+</p>
