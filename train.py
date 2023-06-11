@@ -21,10 +21,10 @@ cudnn.deterministic = True
 # initialize gpu, tokinizer,
 # encoder and model
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-encoder = ViTForImageClassification.from_pretrained('VIT_130.pth').train()
+encoder = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224-in21k').train()
 feature_extractor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224-in21k')
 model = Transformer(encoder).train().to(device)
-model.load_state_dict(torch.load("./our_model/model_130.pth"))
+model.load_state_dict(torch.load("./our_model/model.pth"))
 tokenizer = AutoTokenizer.from_pretrained("own-tokenizer")
 
 # load train dataset
