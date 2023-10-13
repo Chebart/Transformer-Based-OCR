@@ -34,7 +34,7 @@ transformers==4.27.3
 
 ## Dataset
 Trainig and test datasets consists of 122297 RGB images of Russian text. There are examples of handwritten and printed text.
-The datasets are distributed as .PNG and .JPEG pictures. You can download images [here](https://drive.google.com/file/d/19EwmBqbX3u1yhYrBbkSwpVTzFuvOhRy8/view?usp=sharing).
+The datasets are distributed as .PNG and .JPEG pictures. You can download images [here](https://drive.google.com/drive/folders/1JElOOTIYz6ctvVmDPFsqGDkS-t04usPY?usp=sharing).
 <p align="center">
   <img src="https://github.com/Chebart/Transformer-OCR/assets/88379173/55d6c388-bab2-4bb2-b640-8ad7e88d198a">
 </p>
