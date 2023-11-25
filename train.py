@@ -24,7 +24,6 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 encoder = ViTForImageClassification.from_pretrained('google/vit-base-patch16-224-in21k').train()
 feature_extractor = ViTImageProcessor.from_pretrained('google/vit-base-patch16-224-in21k')
 model = Transformer(encoder).train().to(device)
-model.load_state_dict(torch.load("./our_model/model.pth"))
 tokenizer = AutoTokenizer.from_pretrained("own-tokenizer")
 
 # load train dataset
@@ -45,7 +44,8 @@ def transform(example_batch):
 
 # transform dataset
 pr_dataset = dataset.with_transform(transform)
-pr_dataset = DataLoader(pr_dataset,batch_size=16)
+BATCH_SIZE = 16
+pr_dataset = DataLoader(pr_dataset,batch_size=BATCH_SIZE)
 
 # optimizer
 optimizer = AdamW(model.parameters(), lr=5e-5, betas=(0.9,0.98), eps=1e-9)
@@ -59,6 +59,7 @@ scheduler = StepLR(optimizer, step_size=50, gamma=0.8)
 # train loop
 progress_bar = tqdm(range(num_training_steps))
 for epoch in range(num_epochs):
+    mean_batch_loss = 0
     for batch in pr_dataset:
         optimizer.zero_grad()
         id, res = model(batch["pixel_values"].to(device),batch["text"].to(device))
@@ -70,12 +71,14 @@ for epoch in range(num_epochs):
         loss = criterion(res,targets)
         loss.backward()
         optimizer.step()
-        progress_bar.write(str(loss.item()))
+        mean_batch_loss += loss
         progress_bar.update(1)
         torch.cuda.empty_cache()
 
+    mean_batch_loss /= len(pr_dataset)
+
     f = open("train_log.txt","w")
-    f.write("epoch{}\n".format(epoch+1))
+    f.write(f"epoch{epoch+1}: {mean_batch_loss}\n")
     scheduler.step()
-    torch.save(model.state_dict(), "./model_{}.pth".format(epoch+1))
-    encoder.save_pretrained("./VIT_{}.pth".format(epoch+1))
+    torch.save(model.state_dict(), f"./model_weights/model_{epoch+1}.pth")
+    encoder.save_pretrained(f"./encoder_weights/VIT_{epoch+1}.pth")
