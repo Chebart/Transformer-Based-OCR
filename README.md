@@ -20,12 +20,12 @@ The dataset is a folder with training and test images, and two annotation files 
 
 train.csv should look as follows:
 <p align="center">
-  <img src="https://github.com/Chebart/Transformer-OCR/assets/88379173/55d6c388-bab2-4bb2-b640-8ad7e88d198a">
+  <img src="https://github.com/Chebart/Transformer-Based-OCR/assets/88379173/e68c2576-c45a-450e-a01e-8d62642bcb16">
 </p>
 
 test.csv should look as follows:
 <p align="center">
-  <img src="https://github.com/Chebart/Transformer-OCR/assets/88379173/55d6c388-bab2-4bb2-b640-8ad7e88d198a">
+  <img src="https://github.com/Chebart/Transformer-Based-OCR/assets/88379173/e7fe2c7f-2983-499f-b10c-92988ef9ba51">
 </p>
 
 2. You should choose what type of tokenizer could you use. If you want to create own tokenizer, use train_tokenizer.py.
