@@ -29,7 +29,7 @@ test.csv should look as follows:
 </p>
 
 2. You should choose what type of tokenizer could you use. If you want to create own tokenizer, use train_tokenizer.py.
-If you want to use tokenizer from Hugging Face, change this line of code:
+If you want to use tokenizer from Hugging Face, change this line of code in train.py and test.py:
 ```
 tokenizer = AutoTokenizer.from_pretrained("own-tokenizer")
 ```
